@@ -51,12 +51,13 @@ function Dashboard() {
   .then((data) => {
     setTopFoods(data);
   });
+  
   fetch("http://127.0.0.1:5000/event_sales")
   .then((response) => response.json())
   .then((data) => {
     setEventSales(data);
   });
-  fetch("http://127.0.0.1:5000/monthly_sales")
+fetch("http://127.0.0.1:5000/monthly_revenue")
   .then((response) => response.json())
   .then((data) => {
     setMonthlySales(data);
@@ -68,8 +69,8 @@ function Dashboard() {
 
   datasets: [
     {
-      label: "Food Orders",
-      data: topFoods.map((food) => food.total_orders),
+      label: "Total Items Sold",
+      data: topFoods.map((food) => food.total_items),
       backgroundColor: "rgba(54, 162, 235, 0.7)"
     }
   ]
@@ -87,9 +88,7 @@ const eventChartData = {
 };
 
 const monthlyChartData = {
-  labels: monthlySales.map((sale) =>
-  sale.month ? "Month " + sale.month : "Unknown"
-),
+  labels: monthlySales.map((sale) => sale.month),
 
   datasets: [
     {
@@ -140,6 +139,7 @@ const monthlyChartData = {
     </div>
 
     <h2 style={{
+
       marginTop: "50px",
       textAlign: "center"
     }}>
@@ -147,14 +147,37 @@ const monthlyChartData = {
     </h2>
 
     <div style={{
-      width: "80%",
+      width: "90%",
+       height: "400px",
       margin: "auto",
       backgroundColor: "white",
       padding: "20px",
       borderRadius: "10px"
     }}>
 
-      <Bar data={chartData} />
+      <Bar data={chartData} 
+      options={{
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Total No. of Items Sold"
+        },
+
+        ticks: {
+          stepSize: 10
+        }
+        
+      },
+      x: {
+        title: {
+          display: true,
+          text: "Food Items"
+        }
+      }
+    }
+  }}/>
       
 
     </div>
@@ -166,7 +189,8 @@ const monthlyChartData = {
 </h2>
 
 <div style={{
-  width: "80%",
+  width: "90%",
+   height: "400px",
   margin: "auto",
   backgroundColor: "white",
   padding: "20px",
@@ -184,15 +208,42 @@ const monthlyChartData = {
 </h2>
 
 <div style={{
-  width: "80%",
-  margin: "auto",
-  backgroundColor: "white",
-  padding: "20px",
-  borderRadius: "10px"
+  width: "90%",
+    height: "400px",
+    margin: "auto",
+    backgroundColor: "white",
+    padding: "20px",
+    borderRadius: "10px"
 }}>
 
-  <Bar data={monthlyChartData} />
+  <Bar
+  data={monthlyChartData}
+  options={{
+    maintainAspectRatio: false,
 
+    plugins: {
+      legend: {
+        display: true
+      }
+    },
+
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Revenue (₹)"
+        }
+      },
+
+      x: {
+        title: {
+          display: true,
+          text: "Months"
+        }
+      }
+    }
+  }}
+/>
 </div>
     
 

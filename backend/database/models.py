@@ -1,4 +1,5 @@
 from database.db import db
+from datetime import datetime
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,9 +27,11 @@ class Order(db.Model):
     food_name = db.Column(db.String(100))
     quantity = db.Column(db.Integer)
     total_price = db.Column(db.Float)
-
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    event_name = db.Column(db.String(100))
     def __repr__(self):
-        return f'<Order {self.customer_name}>'   
+        return f'<Order {self.customer_name}>'  
+     
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_name = db.Column(db.String(100))

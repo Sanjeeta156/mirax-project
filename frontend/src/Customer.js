@@ -4,12 +4,6 @@ function Customer() {
 
   const [foods, setFoods] = useState([]);
 
-  const [customerName, setCustomerName] = useState("");
-  const [foodName, setFoodName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
-  const [eventName, setEventName] = useState("");
-
   const [feedbackName, setFeedbackName] = useState("");
   const [feedbackFood, setFeedbackFood] = useState("");
   const [rating, setRating] = useState("");
@@ -24,34 +18,6 @@ function Customer() {
       });
 
   }, []);
-
-  const placeOrder = () => {
-
-    fetch("http://127.0.0.1:5000/place_order", {
-
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json"
-      },
-
-      body: JSON.stringify({
-        customer_name: customerName,
-        food_name: foodName,
-        quantity: quantity,
-        price: price,
-        event_name: eventName
-      })
-
-    })
-
-    .then((response) => response.json())
-
-    .then((data) => {
-      alert(data.message);
-    });
-
-  };
 
   const submitFeedback = () => {
 
@@ -115,7 +81,7 @@ function Customer() {
             <th style={tableStyle}>Food</th>
             <th style={tableStyle}>Category</th>
             <th style={tableStyle}>Price</th>
-            <th style={tableStyle}>Quantity</th>
+            
           </tr>
 
         </thead>
@@ -125,12 +91,10 @@ function Customer() {
           {foods.map((food) => (
 
             <tr key={food.id}>
-
               <td style={tableStyle}>{food.food_name}</td>
               <td style={tableStyle}>{food.category}</td>
               <td style={tableStyle}>₹ {food.price}</td>
-              <td style={tableStyle}>{food.quantity}</td>
-
+              
             </tr>
 
           ))}
@@ -140,87 +104,112 @@ function Customer() {
       </table>
 
       <h2 style={{
-        marginTop: "50px"
+        marginTop: "50px",
+        textAlign: "center"
       }}>
-        Place Order
-      </h2>
-
-      <input
-        type="text"
-        placeholder="Customer Name"
-        onChange={(e) => setCustomerName(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Food Name"
-        onChange={(e) => setFoodName(e.target.value)}
-      />
-
-      <input
-        type="number"
-        placeholder="Quantity"
-        onChange={(e) => setQuantity(e.target.value)}
-      />
-
-      <input
-        type="number"
-        placeholder="Price"
-        onChange={(e) => setPrice(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Event Name"
-        onChange={(e) => setEventName(e.target.value)}
-      />
-
-      <button onClick={placeOrder}>
-        Place Order
-      </button>
-
-      <h2 style={{
-        marginTop: "50px"
-      }}>
-        Give Feedback
-      </h2>
-
-      <input
-        type="text"
-        placeholder="Your Name"
-        onChange={(e) => setFeedbackName(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Food Name"
-        onChange={(e) => setFeedbackFood(e.target.value)}
-      />
-
-      <input
-        type="number"
-        placeholder="Rating"
-        onChange={(e) => setRating(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="Comment"
-        onChange={(e) => setComment(e.target.value)}
-      />
-
-      <button onClick={submitFeedback}>
         Submit Feedback
-      </button>
+      </h2>
+
+      <div style={{
+        backgroundColor: "white",
+        padding: "20px",
+        borderRadius: "10px",
+        width: "97%",
+        margin: "auto",
+        marginTop: "20px",
+        textAlign: "center"
+      }}>
+
+        <input
+          type="text"
+          placeholder="Customer Name"
+          onChange={(e) => setFeedbackName(e.target.value)}
+          style={{
+          width: "100%",
+          height: "15px",
+          padding: "8px",
+          fontSize: "16px",
+          borderRadius: "8px",
+          border: "1px solid #ccc"
+          
+           }}
+        />
+
+        <br /><br />
+
+        <input
+          type="text"
+          placeholder="Food Name"
+          onChange={(e) => setFeedbackFood(e.target.value)}
+          style={{
+          width: "100%",
+          height: "15px",
+          padding: "8px",
+          fontSize: "16px",
+          borderRadius: "8px",
+          border: "1px solid #ccc"
+           }} 
+        />
+
+        <br /><br />
+
+        <input
+          type="number"
+          placeholder="Rating"
+          onChange={(e) => setRating(e.target.value)}
+          style={{
+          width: "100%",
+          height: "15px",
+          padding: "8px",
+          fontSize: "16px",
+         borderRadius: "8px",
+          border: "1px solid #ccc"
+           }}
+        />
+
+        <br /><br />
+
+        <input
+          type="text"
+          placeholder="Comment"
+          onChange={(e) => setComment(e.target.value)}
+          style={{
+          width: "100%",
+          height: "15px",
+          padding: "8px",
+          fontSize: "16px",
+          borderRadius: "8px",
+          border: "1px solid #ccc"
+           }}
+        />
+
+        <br /><br />
+
+        <button onClick={submitFeedback}
+        style={{
+        backgroundColor: "blue",
+        color: "white",
+        padding: "10px 20px",
+        border: "none",
+        borderRadius: "8px",
+        fontSize: "16px",
+        cursor: "pointer"
+        }}>
+          Submit Feedback
+        </button>
+
+      </div>
 
     </div>
   );
 }
 
 const tableStyle = {
-  border: "1px solid #ddd",
+  border: "6px solid #ddd",
   padding: "12px",
   textAlign: "center"
+  
+  
 };
 
 export default Customer;
