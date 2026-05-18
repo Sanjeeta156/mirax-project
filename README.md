@@ -33,7 +33,7 @@ A beginner-friendly full-stack web application developed for managing and analyz
 ## Customer Module
 
 * View food menu
-* Place food orders
+* Place food orders(Offline)
 * Submit ratings and feedback
 
 ## Staff Module
