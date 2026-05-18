@@ -435,38 +435,21 @@ def login():
 
     data = request.get_json()
 
-    username = data["username"]
-    password = data["password"]
-    role = data["role"]
+    user = User.query.filter_by(
+        username=data["username"],
+        password=data["password"],
+        role=data["role"]
+    ).first()
 
-    if (
-        username == "manager" and
-        password == "123" and
-        role == "manager"
-    ):
+    if user:
 
         token = create_access_token(
-            identity="manager"
+            identity=user.username
         )
 
         return jsonify({
             "token": token,
-            "role": "manager"
-        })
-
-    elif (
-        username == "staff" and
-        password == "123" and
-        role == "staff"
-    ):
-
-        token = create_access_token(
-            identity="staff"
-        )
-
-        return jsonify({
-            "token": token,
-            "role": "staff"
+            "role": user.role
         })
 
     else:

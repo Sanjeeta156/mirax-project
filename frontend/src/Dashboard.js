@@ -197,8 +197,34 @@ const monthlyChartData = {
   borderRadius: "10px"
 }}>
 
-  <Bar data={eventChartData} />
+ <Bar
+  data={eventChartData}
+  options={{
+    maintainAspectRatio: false,
 
+    plugins: {
+      legend: {
+        display: true
+      }
+    },
+
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: "Event Revenue (₹)"
+        }
+      },
+
+      x: {
+        title: {
+          display: true,
+          text: "Events"
+        }
+      }
+    }
+  }}
+/>
 </div>
 <h2 style={{
   marginTop: "50px",
