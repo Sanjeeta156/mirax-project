@@ -3,6 +3,7 @@ from database.db import db
 from database.models import User, Food, Order, Feedback, Event
 from sqlalchemy import func, extract
 from datetime import datetime
+import os
 from flask_cors import CORS
 from flask_jwt_extended import (
     JWTManager,
@@ -15,9 +16,13 @@ app.config["JWT_SECRET_KEY"] = "smartcanteen123"
 
 jwt = JWTManager(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Sanjeeta%40' \
-'54@localhost/canteen_db'
-
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://"
+    f"{os.getenv('MYSQLUSER')}:"
+    f"{os.getenv('MYSQLPASSWORD')}@"
+    f"{os.getenv('MYSQLHOST')}/"
+    f"{os.getenv('MYSQLDATABASE')}"
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
