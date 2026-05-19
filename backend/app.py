@@ -32,6 +32,38 @@ db.init_app(app)
 def home():
     return "Smart Canteen Backend Running "
 
+@app.route('/test_food')
+def test_food():
+
+    food1 = Food(
+        food_name="Burger",
+        price=120,
+        category="Fast Food",
+        quantity=50
+    )
+
+    food2 = Food(
+        food_name="Dosa",
+        price=80,
+        category="South Indian",
+        quantity=40
+    )
+
+    food3 = Food(
+        food_name="Pizza",
+        price=200,
+        category="Italian",
+        quantity=30
+    )
+
+    db.session.add(food1)
+    db.session.add(food2)
+    db.session.add(food3)
+
+    db.session.commit()
+
+    return "Foods Added Successfully"
+
 
 @app.route('/add_food', methods=['POST'])
 def add_food():
