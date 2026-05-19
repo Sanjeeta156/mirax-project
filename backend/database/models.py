@@ -1,5 +1,6 @@
 from database.db import db
 from datetime import datetime
+from flask_cors import CORS
 
 
 
