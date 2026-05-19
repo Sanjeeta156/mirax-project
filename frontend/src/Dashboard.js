@@ -30,34 +30,34 @@ function Dashboard() {
 
   useEffect(() => {
 
-    fetch("http://127.0.0.1:5000/analytics")
+    fetch("https://mirax-project-production.up.railway.app/analytics")
       .then((response) => response.json())
       .then((data) => {
         setAnalytics(data);
       });
 
-    fetch("http://127.0.0.1:5000/feedbacks")
+    fetch("https://mirax-project-production.up.railway.app/feedbacks")
       .then((response) => response.json())
       .then((data) => {
         setFeedbacks(data);
       });
-      fetch("http://127.0.0.1:5000/low_stock")
+      fetch("https://mirax-project-production.up.railway.app/low_stock")
   .then((response) => response.json())
   .then((data) => {
     setLowStock(data);
   });
-  fetch("http://127.0.0.1:5000/top_foods")
+  fetch("https://mirax-project-production.up.railway.app/top_foods")
   .then((response) => response.json())
   .then((data) => {
     setTopFoods(data);
   });
   
-  fetch("http://127.0.0.1:5000/event_sales")
+  fetch("https://mirax-project-production.up.railway.app/event_sales")
   .then((response) => response.json())
   .then((data) => {
     setEventSales(data);
   });
-fetch("http://127.0.0.1:5000/monthly_revenue")
+fetch("https://mirax-project-production.up.railway.app/monthly_revenue")
   .then((response) => response.json())
   .then((data) => {
     setMonthlySales(data);

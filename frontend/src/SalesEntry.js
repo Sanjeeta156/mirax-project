@@ -11,7 +11,7 @@ function SalesEntry() {
 
   useEffect(() => {
 
-    fetch("http://127.0.0.1:5000/menu")
+    fetch("https://mirax-project-production.up.railway.app/menu")
       .then((response) => response.json())
       .then((data) => {
         setFoods(data);
@@ -21,7 +21,7 @@ function SalesEntry() {
 
   const addSales = () => {
 
-    fetch("http://127.0.0.1:5000/add_sales", {
+    fetch("https://mirax-project-production.up.railway.app/add_sales", {
 
       method: "POST",
 

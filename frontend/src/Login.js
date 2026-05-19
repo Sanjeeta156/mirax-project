@@ -17,7 +17,7 @@ function Login() {
       return;
     }
 
-    fetch("http://127.0.0.1:5000/login", {
+   fetch("https://mirax-project-production.up.railway.app/login", {
 
       method: "POST",
 
