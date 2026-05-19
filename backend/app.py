@@ -69,7 +69,31 @@ def get_menu():
 
 
 with app.app_context():
+
     db.create_all()
+
+    manager = User.query.filter_by(
+        username="manager"
+    ).first()
+
+    if not manager:
+
+        manager_user = User(
+            username="manager",
+            password="manager123",
+            role="manager"
+        )
+
+        staff_user = User(
+            username="staff",
+            password="staff123",
+            role="staff"
+        )
+
+        db.session.add(manager_user)
+        db.session.add(staff_user)
+
+        db.session.commit()
 
 @app.route("/place_order", methods=["POST"])
 def place_order():
