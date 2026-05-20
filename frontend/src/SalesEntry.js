@@ -8,6 +8,11 @@ function SalesEntry() {
   const [quantity, setQuantity] = useState("");
   
   const [eventName, setEventName] = useState("");
+  const [newFoodName, setNewFoodName] = useState("");
+const [category, setCategory] = useState("");
+const [price, setPrice] = useState("");
+const [foodQuantity, setFoodQuantity] = useState("");
+const [eventName, setEventName] = useState("");
 
   useEffect(() => {
 
@@ -46,12 +51,82 @@ function SalesEntry() {
 
   };
 
+  const addFood = () => {
+
+  fetch("https://mirax-project-production.up.railway.app/add_food", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+      food_name: newFoodName,
+      category: category,
+      price: price,
+      quantity: foodQuantity
+    })
+
+  })
+
+  .then((response) => response.json())
+
+  .then((data) => {
+
+    alert(data.message);
+
+    window.location.reload();
+
+  });
+
+};
+
   return (
 
     <div style={{
       padding: "40px",
       textAlign: "center"
     }}>
+      <h1>Add Food Item</h1>
+
+<input
+  type="text"
+  placeholder="Food Name"
+  onChange={(e) => setNewFoodName(e.target.value)}
+/>
+
+<br /><br />
+
+<input
+  type="text"
+  placeholder="Category"
+  onChange={(e) => setCategory(e.target.value)}
+/>
+
+<br /><br />
+
+<input
+  type="number"
+  placeholder="Price"
+  onChange={(e) => setPrice(e.target.value)}
+/>
+
+<br /><br />
+
+<input
+  type="number"
+  placeholder="Quantity"
+  onChange={(e) => setFoodQuantity(e.target.value)}
+/>
+
+<br /><br />
+
+<button onClick={addFood}>
+  Add Food
+</button>
+
+<br /><br /><br />
 
       <h1>Canteen Staff Sales Entry</h1>
 
