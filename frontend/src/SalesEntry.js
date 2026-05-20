@@ -12,7 +12,7 @@ function SalesEntry() {
 const [category, setCategory] = useState("");
 const [price, setPrice] = useState("");
 const [foodQuantity, setFoodQuantity] = useState("");
-const [eventName, setEventName] = useState("");
+
 
   useEffect(() => {
 
