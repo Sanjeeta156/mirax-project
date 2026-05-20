@@ -95,6 +95,14 @@ const [price, setPrice] = useState("");
   type="text"
   placeholder="Food Name"
   onChange={(e) => setNewFoodName(e.target.value)}
+  style={{
+    width: "300px",
+    height: "15px",
+    padding: "8px",
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc"
+  }}
 />
 
 <br /><br />
@@ -103,6 +111,14 @@ const [price, setPrice] = useState("");
   type="text"
   placeholder="Category"
   onChange={(e) => setCategory(e.target.value)}
+  style={{
+    width: "300px",
+    height: "15px",
+    padding: "8px",
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc"
+  }}
 />
 
 <br /><br />
@@ -111,14 +127,30 @@ const [price, setPrice] = useState("");
   type="number"
   placeholder="Price"
   onChange={(e) => setPrice(e.target.value)}
+  style={{
+    width: "300px",
+    height: "15px",
+    padding: "8px",
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc"
+  }}
 />
-
-
-
 
 <br /><br />
 
-<button onClick={addFood}>
+<button
+  onClick={addFood}
+  style={{
+    backgroundColor: "blue",
+    color: "white",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "8px",
+    fontSize: "16px",
+    cursor: "pointer"
+  }}
+>
   Add Food
 </button>
 
