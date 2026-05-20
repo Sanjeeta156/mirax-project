@@ -66,7 +66,7 @@ const [foodQuantity, setFoodQuantity] = useState("");
       food_name: newFoodName,
       category: category,
       price: price,
-      quantity: foodQuantity
+      
     })
 
   })
@@ -113,13 +113,8 @@ const [foodQuantity, setFoodQuantity] = useState("");
   onChange={(e) => setPrice(e.target.value)}
 />
 
-<br /><br />
 
-<input
-  type="number"
-  placeholder="Quantity"
-  onChange={(e) => setFoodQuantity(e.target.value)}
-/>
+
 
 <br /><br />
 
@@ -162,21 +157,6 @@ const [foodQuantity, setFoodQuantity] = useState("");
 
       <br /><br />
 
-      <input
-        type="number"
-        placeholder="Quantity Sold"
-        onChange={(e) => setQuantity(e.target.value)}
-        style={{
-            width: "300px",
-            height: "15px",
-            padding: "8px",
-            fontSize: "16px",
-            borderRadius: "8px",
-             border: "1px solid #ccc"
-         }}
-      />
-
-      <br /><br />
 
       
 
