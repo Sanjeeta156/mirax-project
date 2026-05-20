@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-
 function SalesEntry() {
 
   const [foods, setFoods] = useState([]);
 
   const [foodName, setFoodName] = useState("");
-  const [quantity] = useState(1);
-  
+  const [quantity, setQuantity] = useState("");
+
   const [eventName, setEventName] = useState("");
   const [newFoodName, setNewFoodName] = useState("");
-const [category, setCategory] = useState("");
-const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
 ;
 
 
@@ -158,9 +157,9 @@ const [price, setPrice] = useState("");
 
       <h1>Canteen Staff Sales Entry</h1>
 
-      <select
-        onChange={(e) => setFoodName(e.target.value)}
-        style={{
+<select
+  onChange={(e) => setFoodName(e.target.value)}
+  style={{
     width: "320px",
     height: "35px",
     padding: "8px",
@@ -168,33 +167,46 @@ const [price, setPrice] = useState("");
     borderRadius: "8px",
     border: "1px solid #ccc"
   }}
-      >
+>
 
-        <option value="">
-          Select Food
-        </option>
+  <option value="">
+    Select Food
+  </option>
 
-        {foods.map((food) => (
+  {foods.map((food) => (
 
-          <option
-            key={food.id}
-            value={food.food_name}
-          >
-            {food.food_name}
-          </option>
+    <option
+      key={food.id}
+      value={food.food_name}
+    >
+      {food.food_name}
+    </option>
 
-        ))}
+  ))}
 
-      </select>
+</select>
 
-      <br /><br />
+<br /><br />
 
+<input
+  type="number"
+  placeholder="Quantity Sold"
+  onChange={(e) => setQuantity(e.target.value)}
+  style={{
+    width: "300px",
+    height: "15px",
+    padding: "8px",
+    fontSize: "16px",
+    borderRadius: "8px",
+    border: "1px solid #ccc"
+  }}
+/>
 
-      
+<br /><br />
 
-      <select
+<select
   onChange={(e) => setEventName(e.target.value)}
-   style={{
+  style={{
     width: "320px",
     height: "35px",
     padding: "8px",
@@ -228,9 +240,10 @@ const [price, setPrice] = useState("");
     Techkriti
   </option>
 
-  <option value="Holy ">
-    Holy 
+  <option value="Holy">
+    Holy
   </option>
+
   <option value="Galaxy">
     Galaxy
   </option>
@@ -240,10 +253,12 @@ const [price, setPrice] = useState("");
   </option>
 
 </select>
-      <br /><br />
 
-      <button onClick={addSales}
-      style={{
+<br /><br />
+
+<button
+  onClick={addSales}
+  style={{
     backgroundColor: "blue",
     color: "white",
     padding: "10px 20px",
@@ -251,10 +266,10 @@ const [price, setPrice] = useState("");
     borderRadius: "8px",
     fontSize: "16px",
     cursor: "pointer"
-  }}>
-        Add Sales
-      </button>
-
+  }}
+>
+  Add Sales
+</button>
     </div>
   );
 }
