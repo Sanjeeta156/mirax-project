@@ -6,7 +6,7 @@ function SalesEntry() {
   const [foods, setFoods] = useState([]);
 
   const [foodName, setFoodName] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity] = useState(1);
   
   const [eventName, setEventName] = useState("");
   const [newFoodName, setNewFoodName] = useState("");
