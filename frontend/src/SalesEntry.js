@@ -12,7 +12,7 @@ function SalesEntry() {
   const [newFoodName, setNewFoodName] = useState("");
 const [category, setCategory] = useState("");
 const [price, setPrice] = useState("");
-const [foodQuantity, setFoodQuantity] = useState("");
+;
 
 
   useEffect(() => {
@@ -63,11 +63,11 @@ const [foodQuantity, setFoodQuantity] = useState("");
     },
 
     body: JSON.stringify({
-      food_name: newFoodName,
-      category: category,
-      price: price,
-      
-    })
+  food_name: newFoodName,
+  category: category,
+  price: price,
+  quantity: 100
+})
 
   })
 
