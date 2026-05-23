@@ -114,12 +114,20 @@ function Customer() {
               }}>
 
                 {food.category === "Beverage" ? (
-                  <FaCoffee />
+                <FaCoffee />
                 ) : food.category === "Snacks" ? (
-                  <FaHamburger />
-                ) : (
-                  <FaPizzaSlice />
-                )}
+                <FaHamburger />
+               ) : food.category === "Dessert" ? (
+  "🍰"
+               ) : food.category === "Chinese" ? (
+               "🍜"
+              ) : food.category === "South Indian" ? (
+  "🥘"
+              ) : food.category === "Juice" ? (
+              "🧃"
+              ) : (
+                <FaPizzaSlice />
+              )}
 
               </div>
 
