@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaUtensils } from "react-icons/fa";
 import {
   FaUtensils,
   FaStar,
@@ -115,6 +116,8 @@ function Customer() {
 
                 {food.category === "Beverage" ? (
                 <FaCoffee />
+                ) : food.category === "Main Course" ? (
+                 <FaUtensils />                 
                 ) : food.category === "Snacks" ? (
                 <FaHamburger />
                ) : food.category === "Dessert" ? (
