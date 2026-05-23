@@ -130,7 +130,7 @@ function SalesEntry() {
           style={inputStyle}
         />
         <br /><br />
-         <br /><br />
+        
 
         <input
         type="number"
