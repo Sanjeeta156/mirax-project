@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+import {
+  FaUtensils,
+  FaStar,
+  FaCommentDots,
+  FaPizzaSlice,
+  FaHamburger,
+  FaCoffee
+} from "react-icons/fa";
 
 function Customer() {
 
@@ -50,89 +58,120 @@ function Customer() {
 
     <div style={{
       padding: "40px",
-      fontFamily: "Arial",
-      backgroundColor: "#f4f6f8",
-      minHeight: "100vh"
+      background: "linear-gradient(to right, #dbeafe, #f8fafc)",
+      minHeight: "100vh",
+      fontFamily: "Arial"
     }}>
 
       <h1 style={{
-        textAlign: "center"
+        textAlign: "center",
+        color: "#1e3a8a",
+        marginBottom: "40px"
       }}>
-        Customer Section
+        🍽 Customer Section
       </h1>
 
-      <h2 style={{
-        marginTop: "40px",
-        textAlign: "center"
-      }}>
-        Food Menu
-      </h2>
-
-      <table style={{
-        width: "100%",
-        marginTop: "20px",
-        borderCollapse: "collapse",
-        backgroundColor: "white"
-      }}>
-
-        <thead>
-
-          <tr>
-            <th style={tableStyle}>Food</th>
-            <th style={tableStyle}>Category</th>
-            <th style={tableStyle}>Price</th>
-            
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {foods.map((food) => (
-
-            <tr key={food.id}>
-              <td style={tableStyle}>{food.food_name}</td>
-              <td style={tableStyle}>{food.category}</td>
-              <td style={tableStyle}>₹ {food.price}</td>
-              
-            </tr>
-
-          ))}
-
-        </tbody>
-
-      </table>
-
-      <h2 style={{
-        marginTop: "50px",
-        textAlign: "center"
-      }}>
-        Submit Feedback
-      </h2>
+      {/* FOOD MENU */}
 
       <div style={{
         backgroundColor: "white",
-        padding: "20px",
-        borderRadius: "10px",
-        width: "97%",
-        margin: "auto",
-        marginTop: "20px",
-        textAlign: "center"
+        padding: "30px",
+        borderRadius: "20px",
+        boxShadow: "0px 4px 15px rgba(0,0,0,0.2)"
       }}>
+
+        <h2 style={{
+          textAlign: "center",
+          color: "#166534"
+        }}>
+          <FaUtensils /> Food Menu
+        </h2>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+          gap: "20px",
+          marginTop: "30px"
+        }}>
+
+          {foods.map((food) => (
+
+            <div
+              key={food.id}
+              style={{
+                backgroundColor: "#f8fafc",
+                padding: "20px",
+                borderRadius: "15px",
+                boxShadow: "0px 2px 8px rgba(0,0,0,0.15)",
+                textAlign: "center"
+              }}
+            >
+
+              <div style={{
+                fontSize: "40px",
+                marginBottom: "10px",
+                color: "#2563eb"
+              }}>
+
+                {food.category === "Beverage" ? (
+                  <FaCoffee />
+                ) : food.category === "Snacks" ? (
+                  <FaHamburger />
+                ) : (
+                  <FaPizzaSlice />
+                )}
+
+              </div>
+
+              <h3>{food.food_name}</h3>
+
+              <p>
+                <b>Category:</b> {food.category}
+              </p>
+
+              <p style={{
+                color: "green",
+                fontWeight: "bold",
+                fontSize: "18px"
+              }}>
+                ₹ {food.price}
+              </p>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* FEEDBACK SECTION */}
+
+      <div style={{
+        backgroundColor: "white",
+        padding: "30px",
+        borderRadius: "20px",
+        boxShadow: "0px 4px 15px rgba(0,0,0,0.2)",
+        marginTop: "50px",
+        width: "70%",
+        marginLeft: "auto",
+        marginRight: "auto"
+      }}>
+
+        <h2 style={{
+          textAlign: "center",
+          color: "#7c3aed"
+        }}>
+          <FaCommentDots /> Submit Feedback
+        </h2>
+
+        <br />
 
         <input
           type="text"
           placeholder="Customer Name"
           onChange={(e) => setFeedbackName(e.target.value)}
-          style={{
-          width: "100%",
-          height: "15px",
-          padding: "8px",
-          fontSize: "16px",
-          borderRadius: "8px",
-          border: "1px solid #ccc"
-          
-           }}
+          style={inputStyle}
         />
 
         <br /><br />
@@ -141,62 +180,55 @@ function Customer() {
           type="text"
           placeholder="Food Name"
           onChange={(e) => setFeedbackFood(e.target.value)}
-          style={{
-          width: "100%",
-          height: "15px",
-          padding: "8px",
-          fontSize: "16px",
-          borderRadius: "8px",
-          border: "1px solid #ccc"
-           }} 
+          style={inputStyle}
         />
 
         <br /><br />
 
-        <input
-          type="number"
-          placeholder="Rating"
+        <select
           onChange={(e) => setRating(e.target.value)}
-          style={{
-          width: "100%",
-          height: "15px",
-          padding: "8px",
-          fontSize: "16px",
-         borderRadius: "8px",
-          border: "1px solid #ccc"
-           }}
-        />
+          style={inputStyle}
+        >
+
+          <option value="">
+            Select Rating
+          </option>
+
+          <option value="1">⭐ 1</option>
+          <option value="2">⭐⭐ 2</option>
+          <option value="3">⭐⭐⭐ 3</option>
+          <option value="4">⭐⭐⭐⭐ 4</option>
+          <option value="5">⭐⭐⭐⭐⭐ 5</option>
+
+        </select>
 
         <br /><br />
 
-        <input
-          type="text"
-          placeholder="Comment"
+        <textarea
+          placeholder="Write your comment..."
           onChange={(e) => setComment(e.target.value)}
           style={{
-          width: "100%",
-          height: "15px",
-          padding: "8px",
-          fontSize: "16px",
-          borderRadius: "8px",
-          border: "1px solid #ccc"
-           }}
+            width: "100%",
+            height: "120px",
+            padding: "12px",
+            fontSize: "16px",
+            borderRadius: "10px",
+            border: "1px solid #ccc"
+          }}
         />
 
         <br /><br />
 
-        <button onClick={submitFeedback}
-        style={{
-        backgroundColor: "blue",
-        color: "white",
-        padding: "10px 20px",
-        border: "none",
-        borderRadius: "8px",
-        fontSize: "16px",
-        cursor: "pointer"
-        }}>
-          Submit Feedback
-        </button>
+        <div style={{ textAlign: "center" }}>
+
+          <button
+            onClick={submitFeedback}
+            style={buttonStyle}
+          >
+            <FaStar /> Submit Feedback
+          </button>
+
+        </div>
 
       </div>
 
@@ -204,12 +236,24 @@ function Customer() {
   );
 }
 
-const tableStyle = {
-  border: "6px solid #ddd",
-  padding: "12px",
-  textAlign: "center"
-  
-  
+const inputStyle = {
+  width: "100%",
+  height: "45px",
+  padding: "10px",
+  fontSize: "16px",
+  borderRadius: "10px",
+  border: "1px solid #ccc"
+};
+
+const buttonStyle = {
+  background: "linear-gradient(to right, #2563eb, #7c3aed)",
+  color: "white",
+  padding: "12px 24px",
+  border: "none",
+  borderRadius: "10px",
+  fontSize: "16px",
+  cursor: "pointer",
+  fontWeight: "bold"
 };
 
 export default Customer;
