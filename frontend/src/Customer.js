@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaUtensils } from "react-icons/fa";
+
 import {
   FaUtensils,
   FaStar,
