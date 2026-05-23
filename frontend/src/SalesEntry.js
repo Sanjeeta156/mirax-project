@@ -237,18 +237,3 @@ const buttonStyle = {
 };
 
 export default SalesEntry;
-```
-
-Install icons package:
-
-```bash
-npm install react-icons
-```
-
-Then push changes:
-
-```bash
-git add .
-git commit -m "Added colorful UI"
-git push origin main
-```

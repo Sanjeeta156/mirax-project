@@ -16,13 +16,21 @@ app.config["JWT_SECRET_KEY"] = "smartcanteen123"
 
 jwt = JWTManager(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f"mysql+pymysql://"
-    f"{os.getenv('MYSQLUSER')}:"
-    f"{os.getenv('MYSQLPASSWORD')}@"
-    f"{os.getenv('MYSQLHOST')}/"
-    f"{os.getenv('MYSQLDATABASE')}"
-)
+if os.getenv("MYSQLHOST"):
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = (
+        f"mysql+pymysql://"
+        f"{os.getenv('MYSQLUSER')}:"
+        f"{os.getenv('MYSQLPASSWORD')}@"
+        f"{os.getenv('MYSQLHOST')}/"
+        f"{os.getenv('MYSQLDATABASE')}"
+    )
+
+else:
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = (
+         "mysql+pymysql://root:Sanjeeta%4054@localhost/canteen_db"
+    )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
