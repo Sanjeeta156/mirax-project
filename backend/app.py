@@ -160,10 +160,12 @@ def analytics():
     ).scalar()
 
     top_food = db.session.query(
-        Order.food_name,
-        func.count(Order.food_name)
-    ).group_by(Order.food_name).order_by(
-        func.count(Order.food_name).desc()
+    Order.food_name,
+    func.sum(Order.quantity).label("total_quantity")
+    ).group_by(
+    Order.food_name
+    ).order_by(
+    func.sum(Order.quantity).desc()
     ).first()
 
     return jsonify({
