@@ -4,6 +4,7 @@ function Register() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
 
   const registerUser = () => {
 
@@ -18,6 +19,7 @@ function Register() {
       body: JSON.stringify({
         username: username,
         password: password
+        role: role
       })
 
     })
@@ -54,6 +56,25 @@ function Register() {
       />
 
       <br /><br />
+      <select
+           onChange={(e) => setRole(e.target.value)}
+      >
+
+          <option value="">
+            Select Role
+          </option>
+
+          <option value="manager">
+            Manager
+          </option>
+
+          <option value="staff">
+            Staff
+          </option>
+
+      </select>
+
+       <br /><br />
 
       <button onClick={registerUser}>
         Register
