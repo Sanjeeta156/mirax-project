@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from database.db import db
 from database.models import User, Food, Order, Feedback, Event
 from sqlalchemy import func, extract
-from datetime import datetime
+# from datetime import datetime
 import os
 from flask_cors import CORS
 from flask_jwt_extended import (
@@ -498,6 +498,35 @@ def login():
         return jsonify({
             "message": "Invalid Login"
         }), 401
+    
+
+
+    @app.route("/signup", methods=["POST"])
+def signup():
+
+    data = request.get_json()
+
+    existing_user = User.query.filter_by(
+        username=data["username"]
+    ).first()
+
+    if existing_user:
+        return jsonify({
+            "message": "User already exists"
+        }), 400
+
+    new_user = User(
+        username=data["username"],
+        password=data["password"],
+        role=data["role"]
+    )
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({
+        "message": "Account Created Successfully"
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)

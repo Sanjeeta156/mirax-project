@@ -4,6 +4,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Customer from "./Customer";
 import SalesEntry from "./SalesEntry";
+import Signup from "./Signup";
 
 function App() {
 
@@ -19,7 +20,10 @@ function App() {
 
         <Route path="/customer" element={<Customer />} />
 
-        <Route path="/sales" element={<SalesEntry />} />
+        <Route path="/sales" element={<SalesEntry />} 
+        
+        />
+        <Route path="/signup" element={<Signup />} />
 
       </Routes>
 
