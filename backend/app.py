@@ -502,8 +502,8 @@ def login():
     
 
 
-@app.route("/signup", methods=["POST"])
-def signup():
+@app.route("/register", methods=["POST"])
+def register():
 
     data = request.get_json()
 
@@ -519,14 +519,15 @@ def signup():
     new_user = User(
         username=data["username"],
         password=data["password"],
-        role=data["role"]
+        role="customer"
     )
 
     db.session.add(new_user)
     db.session.commit()
 
     return jsonify({
-        "message": "Account Created Successfully"
+        "message": "User registered successfully"
+    
     })
 
 if __name__ == '__main__':

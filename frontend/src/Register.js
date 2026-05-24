@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-function Signup() {
+function Register() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
 
-  const signup = () => {
+  const registerUser = () => {
 
-    fetch("https://mirax-project-production.up.railway.app/signup", {
+    fetch("https://mirax-project-production.up.railway.app/register", {
 
       method: "POST",
 
@@ -17,9 +16,8 @@ function Signup() {
       },
 
       body: JSON.stringify({
-        username,
-        password,
-        role
+        username: username,
+        password: password
       })
 
     })
@@ -36,7 +34,7 @@ function Signup() {
 
     <div style={{
       textAlign: "center",
-      marginTop: "100px"
+      padding: "50px"
     }}>
 
       <h1>Create Account</h1>
@@ -57,22 +55,12 @@ function Signup() {
 
       <br /><br />
 
-      <select onChange={(e) => setRole(e.target.value)}>
-
-        <option>Select Role</option>
-        <option value="manager">Manager</option>
-        <option value="staff">Staff</option>
-
-      </select>
-
-      <br /><br />
-
-      <button onClick={signup}>
-        Signup
+      <button onClick={registerUser}>
+        Register
       </button>
 
     </div>
   );
 }
 
-export default Signup;
+export default Register;
