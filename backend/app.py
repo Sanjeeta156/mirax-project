@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from database.db import db
 from database.models import User, Food, Order, Feedback, Event
 from sqlalchemy import func, extract
-# from datetime import datetime
+from datetime import datetime
 import os
 from flask_cors import CORS
 from flask_jwt_extended import (
@@ -501,7 +501,7 @@ def login():
     
 
 
-    @app.route("/signup", methods=["POST"])
+@app.route("/signup", methods=["POST"])
 def signup():
 
     data = request.get_json()
