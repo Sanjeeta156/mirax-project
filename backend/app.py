@@ -116,12 +116,12 @@ def place_order():
 
     total_price = food.price * int(data["quantity"])
 
-   new_order = Order(
-    customer_name=data["customer_name"],
-    food_name=data["food_name"],
-    quantity=data["quantity"],
-    total_price=total_price,
-    event_name="Normal Day"
+    new_order = Order(
+       customer_name="Walk-in Customer",
+       food_name=data["food_name"],
+       quantity=data["quantity"],
+       total_price=total_price,
+       event_name=data.get("event_name", "Normal Day")
 )
 
     db.session.add(new_order)
@@ -132,6 +132,7 @@ def place_order():
 
     return jsonify({
         "message": "Order placed successfully"
+    
     })
 @app.route('/feedbacks', methods=['GET'])
 def get_feedbacks():
