@@ -116,12 +116,13 @@ def place_order():
 
     total_price = food.price * int(data["quantity"])
 
-    new_order = Order(
-        customer_name=data["customer_name"],
-        food_name=data["food_name"],
-        quantity=data["quantity"],
-        price=total_price
-    )
+   new_order = Order(
+    customer_name=data["customer_name"],
+    food_name=data["food_name"],
+    quantity=data["quantity"],
+    total_price=total_price,
+    event_name="Normal Day"
+)
 
     db.session.add(new_order)
 
