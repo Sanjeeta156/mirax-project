@@ -8,7 +8,7 @@ function Register() {
 
   const registerUser = () => {
 
-    fetch("https://mirax-project-production.up.railway.app/register", {
+    fetch("https://mirax-project-production.up.railway.app/signup", {
 
       method: "POST",
 
@@ -18,7 +18,7 @@ function Register() {
 
       body: JSON.stringify({
         username: username,
-        password: password
+        password: password,
         role: role
       })
 
@@ -56,25 +56,26 @@ function Register() {
       />
 
       <br /><br />
+
       <select
-           onChange={(e) => setRole(e.target.value)}
+        onChange={(e) => setRole(e.target.value)}
       >
 
-          <option value="">
-            Select Role
-          </option>
+        <option value="">
+          Select Role
+        </option>
 
-          <option value="manager">
-            Manager
-          </option>
+        <option value="manager">
+          Manager
+        </option>
 
-          <option value="staff">
-            Staff
-          </option>
+        <option value="staff">
+          Staff
+        </option>
 
       </select>
 
-       <br /><br />
+      <br /><br />
 
       <button onClick={registerUser}>
         Register
