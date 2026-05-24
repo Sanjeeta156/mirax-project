@@ -17,7 +17,7 @@ function Login() {
       return;
     }
 
-   fetch("https://mirax-project-production.up.railway.app/login", {
+    fetch("https://mirax-project-production.up.railway.app/login", {
 
       method: "POST",
 
@@ -73,27 +73,28 @@ function Login() {
     }}>
 
       <h1
-  style={{
-    fontSize: "42px",
-    fontWeight: "bold",
-    color: "#222"
-  }}
->
-  Smart Canteen System
-</h1>
+        style={{
+          fontSize: "42px",
+          fontWeight: "bold",
+          color: "#222"
+        }}
+      >
+        Smart Canteen System
+      </h1>
+
       <h2>Select Role</h2>
 
       <select
         value={role}
         onChange={(e) => setRole(e.target.value)}
-         style={{
-    width: "320px",
-    height: "35px",
-    padding: "8px",
-    fontSize: "16px",
-    borderRadius: "8px",
-    border: "1px solid #ccc"
-  }}
+        style={{
+          width: "320px",
+          height: "40px",
+          padding: "8px",
+          fontSize: "16px",
+          borderRadius: "8px",
+          border: "1px solid #ccc"
+        }}
       >
 
         <option value="">
@@ -118,16 +119,18 @@ function Login() {
 
       {role === "customer" && (
 
-        <button onClick={loginUser}
-        style={{
-    backgroundColor: "blue",
-    color: "white",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: "39px",
-    fontSize: "16px",
-    cursor: "pointer"
-  }}>
+        <button
+          onClick={loginUser}
+          style={{
+            backgroundColor: "blue",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "30px",
+            fontSize: "16px",
+            cursor: "pointer"
+          }}
+        >
           Enter Customer Section
         </button>
 
@@ -142,13 +145,13 @@ function Login() {
             placeholder="Username"
             onChange={(e) => setUsername(e.target.value)}
             style={{
-    width: "310px",
-    height: "15px",
-    padding: "8px",
-    fontSize: "16px",
-    borderRadius: "8px",
-    border: "1px solid #ccc"
-  }}
+              width: "310px",
+              height: "18px",
+              padding: "8px",
+              fontSize: "16px",
+              borderRadius: "8px",
+              border: "1px solid #ccc"
+            }}
           />
 
           <br /><br />
@@ -157,28 +160,29 @@ function Login() {
             type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-             style={{
-          width: "310px",
-          height: "15px",
-         padding: "8px",
-         fontSize: "16px",
-         borderRadius: "8px",
-         border: "1px solid #ccc"
-  }}
+            style={{
+              width: "310px",
+              height: "18px",
+              padding: "8px",
+              fontSize: "16px",
+              borderRadius: "8px",
+              border: "1px solid #ccc"
+            }}
           />
 
           <br /><br />
 
-          <button onClick={loginUser}
-          style={{
-          backgroundColor: "blue",
-          color: "white",
-          padding: "10px 25px",
-          border: "none",
-          borderRadius: "8px",
-          fontSize: "16px",
-          cursor: "pointer"
-  }}
+          <button
+            onClick={loginUser}
+            style={{
+              backgroundColor: "blue",
+              color: "white",
+              padding: "10px 25px",
+              border: "none",
+              borderRadius: "8px",
+              fontSize: "16px",
+              cursor: "pointer"
+            }}
           >
             Login
           </button>
@@ -186,6 +190,27 @@ function Login() {
         </div>
 
       )}
+
+      <br /><br /><br />
+
+      <h3>
+        New User?
+      </h3>
+
+      <button
+        onClick={() => navigate("/register")}
+        style={{
+          backgroundColor: "green",
+          color: "white",
+          padding: "10px 25px",
+          border: "none",
+          borderRadius: "8px",
+          fontSize: "16px",
+          cursor: "pointer"
+        }}
+      >
+        Register Here
+      </button>
 
     </div>
   );
