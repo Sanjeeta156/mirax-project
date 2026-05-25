@@ -515,11 +515,10 @@ def register():
         return jsonify({
             "message": "User already exists"
         }), 400
-
     new_user = User(
-        username=data["username"],
-        password=data["password"],
-        role="customer"
+       username=data["username"],
+       password=data["password"],
+       role=data["role"]
     )
 
     db.session.add(new_user)
