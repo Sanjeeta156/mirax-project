@@ -10,7 +10,7 @@ function Register() {
     try {
 
       const response = await fetch(
-        "https://mirax-project-production.up.railway.app/signup",
+        "https://mirax-project-production.up.railway.app/register",
        {
         method: "POST",
 
