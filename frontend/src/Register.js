@@ -5,43 +5,40 @@ function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const registerUser = async () => {
 
-  const registerUser = () => {
+    try {
 
-  fetch("https://mirax-project-production.up.railway.app/signup", {
+      const response = await fetch(
+        "https://mirax-project-production.up.railway.app/signup",
+       {
+        method: "POST",
 
-    method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
 
-    headers: {
-      "Content-Type": "application/json"
-    },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          role: role
+        })
+      }
+    );
 
-    body: JSON.stringify({
-      username: username,
-      password: password,
-      role: role
-    })
+    const data = await response.json();
 
-  })
+    alert(data.message);
 
- .then((response) => response.json())
+  } catch (error) {
 
-.then((data) => {
+    alert("Registration Failed");
 
-  console.log(data);
+    console.log(error);
 
-  alert(data.message);
+  }
 
-})
-
-.catch((error) => {
-
-  console.log(error);
-
-  alert("Registration Failed");
-
-});
-};
+}; 
 
  return (
 
