@@ -32,56 +32,61 @@ function Register() {
 
   };
 
-  return (
+ return (
 
-    <div style={{
-      textAlign: "center",
-      padding: "50px"
-    }}>
+  <div style={{
+    textAlign: "center",
+    padding: "50px"
+  }}>
 
-      <h1>Create Account</h1>
+    <h1>Create Account</h1>
 
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setUsername(e.target.value)}
-      />
+    <select
+      onChange={(e) => setRole(e.target.value)}
+      style={{
+        width: "220px",
+        height: "35px"
+      }}
+    >
 
-      <br /><br />
+      <option value="">
+        Select Role
+      </option>
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <option value="manager">
+        Manager
+      </option>
 
-      <br /><br />
+      <option value="staff">
+        Staff
+      </option>
 
-      <select
-        onChange={(e) => setRole(e.target.value)}
-      >
+    </select>
 
-        <option value="">
-          Select Role
-        </option>
+    <br /><br />
 
-        <option value="manager">
-          Manager
-        </option>
+    <input
+      type="text"
+      placeholder="Username"
+      onChange={(e) => setUsername(e.target.value)}
+    />
 
-        <option value="staff">
-          Staff
-        </option>
+    <br /><br />
 
-      </select>
+    <input
+      type="password"
+      placeholder="Password"
+      onChange={(e) => setPassword(e.target.value)}
+    />
 
-      <br /><br />
+    <br /><br />
 
-      <button onClick={registerUser}>
-        Register
-      </button>
+    <button onClick={registerUser}>
+      Register
+    </button>
 
-    </div>
+  </div>
+
   );
 }
 
