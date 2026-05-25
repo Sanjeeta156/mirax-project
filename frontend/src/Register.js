@@ -23,13 +23,19 @@ function Register() {
       })
 
     })
+   .then((data) => {
 
-    .then((response) => response.json())
+      if (data.message) {
 
-    .then((data) => {
       alert(data.message);
-    });
 
+  } else {
+
+     alert("Account Created");
+
+  }
+
+ });
   };
 
  return (
