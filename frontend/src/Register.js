@@ -8,35 +8,31 @@ function Register() {
 
   const registerUser = () => {
 
-    fetch("https://mirax-project-production.up.railway.app/signup", {
+  fetch("https://mirax-project-production.up.railway.app/signup", {
 
-      method: "POST",
+    method: "POST",
 
-      headers: {
-        "Content-Type": "application/json"
-      },
+    headers: {
+      "Content-Type": "application/json"
+    },
 
-      body: JSON.stringify({
-        username: username,
-        password: password,
-        role: role
-      })
-
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      role: role
     })
-   .then((data) => {
 
-      if (data.message) {
+  })
 
-      alert(data.message);
+  .then((response) => response.json())
 
-  } else {
+  .then((data) => {
 
-     alert("Account Created");
+    alert("Registered Completely Thank You");
 
-  }
+  });
 
- });
-  };
+};
 
  return (
 
