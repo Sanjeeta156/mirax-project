@@ -24,14 +24,23 @@ function Register() {
 
   })
 
-  .then((response) => response.json())
+ .then((response) => response.json())
 
-  .then((data) => {
+.then((data) => {
 
-    alert("Registered Completely Thank You");
+  console.log(data);
 
-  });
+  alert(data.message);
 
+})
+
+.catch((error) => {
+
+  console.log(error);
+
+  alert("Registration Failed");
+
+});
 };
 
  return (
