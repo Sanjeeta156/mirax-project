@@ -427,11 +427,18 @@ def monthly_sales():
 def add_feedback():
 
     data = request.get_json()
+    rating = int(data["rating"])
+
+    if rating < 1 or rating > 5:
+
+        return jsonify({
+           "message": "Rating must be between 1 and 5"
+        }), 400
 
     new_feedback = Feedback(
         customer_name=data["customer_name"],
         food_name=data["food_name"],
-        rating=data["rating"],
+        rating=rating,
         comment=data["comment"]
     )
 
