@@ -42,14 +42,53 @@ class Event(db.Model):
     expected_customers = db.Column(db.Integer)
 
     def __repr__(self):
-        return f'<Event {self.event_name}>'      
+        return f'<Event {self.event_name}>' 
+
+class Canteen(db.Model):
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    canteen_name = db.Column(
+        db.String(100)
+    )
+
+    manager_email = db.Column(
+        db.String(100)
+    )
+
+    def __repr__(self):
+
+        return f'<Canteen {self.canteen_name}>'         
     
 class User(db.Model):
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
-    username = db.Column(db.String(100), unique=True)
+    username = db.Column(
+        db.String(100),
+        unique=True
+    )
 
-    password = db.Column(db.String(100))
+    password = db.Column(
+        db.String(100)
+    )
 
-    role = db.Column(db.String(50))    
+    role = db.Column(
+        db.String(50)
+    )
+
+    canteen_id = db.Column(
+        db.Integer,
+        db.ForeignKey('canteen.id')
+    )
+
+    approved = db.Column(
+        db.Boolean,
+        default=False
+    )
