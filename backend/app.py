@@ -506,7 +506,29 @@ def login():
         return jsonify({
             "message": "Invalid Login"
         }), 401
-    
+        
+@app.route("/pending_managers")
+def pending_managers():
+
+    managers = User.query.filter_by(
+        role="manager",
+        approved=False
+    ).all()
+
+    result = []
+
+    for manager in managers:
+
+        result.append({
+
+            "id": manager.id,
+
+            "username": manager.username
+
+        })
+
+    return jsonify(result)   
+
 
 
 @app.route("/register", methods=["POST"])
@@ -535,6 +557,44 @@ def register():
         "message": "User registered successfully"
     
     })
+
+@app.route("/approve_manager/<int:id>", methods=["PUT"])
+def approve_manager(id):
+
+    manager = User.query.get(id)
+
+    if not manager:
+
+        return jsonify({
+            "message": "Manager not found"
+        }), 404
+
+    manager.approved = True
+
+    db.session.commit()
+
+    return jsonify({
+        "message": "Manager Approved"
+    })
+@app.route("/pending_managers")
+def pending_managers():
+
+    managers = User.query.filter_by(
+        role="manager",
+        approved=False
+    ).all()
+
+    result = []
+
+    for manager in managers:
+
+        result.append({
+            "id": manager.id,
+            "username": manager.username
+        })
+
+    return jsonify(result)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

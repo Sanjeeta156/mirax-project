@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard";
 import Customer from "./Customer";
 import SalesEntry from "./SalesEntry";
 import Register from "./Register";
+import AdminDashboard from "./AdminDashboard";
 
 function App() {
 
@@ -28,6 +29,8 @@ function App() {
         />
 
       </Routes>
+
+      <Route path="/admin" element={<AdminDashboard />} />
 
     </BrowserRouter>
 

@@ -44,14 +44,23 @@ function Login() {
           data.token
         );
 
-        if (data.role === "manager") {
+       if (data.role === "superadmin") {
+
+          navigate("/admin");
+
+        }
+
+       else if (data.role === "manager") {
+
           navigate("/dashboard");
-        }
 
-        else if (data.role === "staff") {
+       }
+
+      else if (data.role === "staff") {
+
           navigate("/sales");
-        }
 
+      }
       }
 
       else {
@@ -112,6 +121,11 @@ function Login() {
         <option value="manager">
           Manager
         </option>
+
+        <option value="superadmin">
+          Admin
+        </option>
+
 
       </select>
 
