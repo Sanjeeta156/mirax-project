@@ -83,12 +83,4 @@ class User(db.Model):
         db.String(50)
     )
 
-    canteen_id = db.Column(
-        db.Integer,
-        db.ForeignKey('canteen.id')
-    )
-
-    approved = db.Column(
-        db.Boolean,
-        default=False
-    )
+    
