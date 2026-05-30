@@ -576,24 +576,6 @@ def approve_manager(id):
     return jsonify({
         "message": "Manager Approved"
     })
-@app.route("/pending_managers")
-def pending_managers():
-
-    managers = User.query.filter_by(
-        role="manager",
-        approved=False
-    ).all()
-
-    result = []
-
-    for manager in managers:
-
-        result.append({
-            "id": manager.id,
-            "username": manager.username
-        })
-
-    return jsonify(result)
 
 
 if __name__ == '__main__':
