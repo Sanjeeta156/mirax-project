@@ -511,8 +511,7 @@ def login():
 def pending_managers():
 
     managers = User.query.filter_by(
-        role="manager",
-        approved=False
+        role="manager"
     ).all()
 
     result = []
