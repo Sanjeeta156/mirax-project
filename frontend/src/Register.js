@@ -85,10 +85,6 @@ function Register() {
             Staff
           </option>
 
-          <option value="customer">
-            Customer
-          </option>
-
         </select>
 
         <input
