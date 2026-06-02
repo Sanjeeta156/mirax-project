@@ -484,28 +484,11 @@ def login():
 
     data = request.get_json()
 
-    user = User.query.filter_by(
-        username=data["username"],
-        password=data["password"],
-        role=data["role"]
-    ).first()
-
-    if user:
-
-        token = create_access_token(
-            identity=user.username
-        )
-
-        return jsonify({
-            "token": token,
-            "role": user.role
-        })
-
-    else:
-
-        return jsonify({
-            "message": "Invalid Login"
-        }), 401
+    return jsonify({
+        "username": data["username"],
+        "password": data["password"],
+        "role": data["role"]
+    })
         
 @app.route("/pending_managers")
 def pending_managers():
