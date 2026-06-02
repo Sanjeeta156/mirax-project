@@ -8,11 +8,8 @@ import Register from "./Register";
 import AdminDashboard from "./AdminDashboard";
 
 function App() {
-
   return (
-
     <BrowserRouter>
-
       <Routes>
 
         <Route path="/" element={<Login />} />
@@ -23,17 +20,12 @@ function App() {
 
         <Route path="/customer" element={<Customer />} />
 
-        <Route
-          path="/sales"
-          element={<SalesEntry />}
-        />
+        <Route path="/sales" element={<SalesEntry />} />
+
+        <Route path="/admin" element={<AdminDashboard />} />
 
       </Routes>
-
-      <Route path="/admin" element={<AdminDashboard />} />
-
     </BrowserRouter>
-
   );
 }
 

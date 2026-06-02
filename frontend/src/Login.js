@@ -44,7 +44,7 @@ function Login() {
           data.token
         );
 
-       if (data.role === "superadmin") {
+       if (data.role === "admin") {
 
           navigate("/admin");
 
