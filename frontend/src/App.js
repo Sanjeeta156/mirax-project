@@ -5,7 +5,7 @@ import Dashboard from "./Dashboard";
 import Customer from "./Customer";
 import SalesEntry from "./SalesEntry";
 import Register from "./Register";
-import AdminDashboard from "./AdminDashboard";
+
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
 
         <Route path="/sales" element={<SalesEntry />} />
 
-        <Route path="/admin" element={<AdminDashboard />} />
+        
 
       </Routes>
     </BrowserRouter>

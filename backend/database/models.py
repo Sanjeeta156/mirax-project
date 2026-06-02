@@ -65,10 +65,7 @@ class Canteen(db.Model):
     
 class User(db.Model):
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
+    id = db.Column(db.Integer, primary_key=True)
 
     username = db.Column(
         db.String(100),

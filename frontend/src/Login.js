@@ -44,13 +44,8 @@ function Login() {
           data.token
         );
 
-       if (data.role === "admin") {
 
-          navigate("/admin");
-
-        }
-
-       else if (data.role === "manager") {
+       if (data.role === "manager") {
 
           navigate("/dashboard");
 
@@ -122,9 +117,7 @@ function Login() {
           Manager
         </option>
 
-        <option value="superadmin">
-          Admin
-        </option>
+       
 
 
       </select>
@@ -152,8 +145,7 @@ function Login() {
 
       {(
     role === "staff" ||
-    role === "manager" ||
-    role === "superadmin"
+    role === "manager" 
     ) && (
 
         <div>

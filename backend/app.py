@@ -484,30 +484,30 @@ def login():
 
     data = request.get_json()
 
-    return jsonify({
-        "username": data["username"],
-        "password": data["password"],
-        "role": data["role"]
-    })
-        
-@app.route("/pending_managers")
-def pending_managers():
+    user = User.query.filter_by(
+        username=data["username"],
+        password=data["password"],
+        role=data["role"]
+    ).first()
 
-    managers = User.query.filter_by(
-        role="manager"
-    ).all()
+    if user:
 
-    result = []
+        token = create_access_token(
+            identity=user.username
+        )
 
-    for manager in managers:
-
-        result.append({
-
-            "id": manager.id,
-
-            "username": manager.username
-
+        return jsonify({
+            "token": token,
+            "role": user.role
         })
+
+    else:
+
+        return jsonify({
+            "message": "Invalid Login"
+        }), 401
+        
+
 
     return jsonify(result)   
 
@@ -540,24 +540,6 @@ def register():
     
     })
 
-@app.route("/approve_manager/<int:id>", methods=["PUT"])
-def approve_manager(id):
-
-    manager = User.query.get(id)
-
-    if not manager:
-
-        return jsonify({
-            "message": "Manager not found"
-        }), 404
-
-    manager.approved = True
-
-    db.session.commit()
-
-    return jsonify({
-        "message": "Manager Approved"
-    })
 
 
 if __name__ == '__main__':
