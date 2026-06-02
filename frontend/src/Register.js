@@ -2,16 +2,15 @@ import React, { useState } from "react";
 
 function Register() {
 
+  const [role, setRole] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
-  const registerUser = async () => {
 
-    try {
+  const registerUser = () => {
 
-      const response = await fetch(
-        "https://mirax-project-production.up.railway.app/register",
-       {
+    fetch(
+      "https://mirax-project-production.up.railway.app/register",
+      {
         method: "POST",
 
         headers: {
@@ -19,83 +18,127 @@ function Register() {
         },
 
         body: JSON.stringify({
-          username: username,
-          password: password,
-          role: role
+          username,
+          password,
+          role
         })
       }
-    );
+    )
+    .then((response) => response.json())
+    .then((data) => {
+      alert(data.message);
+    });
 
-    const data = await response.json();
+  };
 
-    alert(data.message);
+  return (
 
-  } catch (error) {
-
-    alert("Registration Failed");
-
-    console.log(error);
-
-  }
-
-}; 
-
- return (
-
-  <div style={{
-    textAlign: "center",
-    padding: "50px"
-  }}>
-
-    <h1>Create Account</h1>
-
-    <select
-      onChange={(e) => setRole(e.target.value)}
+    <div
       style={{
-        width: "220px",
-        height: "35px"
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#f4f6f8"
       }}
     >
 
-      <option value="">
-        Select Role
-      </option>
+      <div
+        style={{
+          background: "white",
+          padding: "40px",
+          borderRadius: "15px",
+          boxShadow: "0px 4px 20px rgba(0,0,0,0.15)",
+          width: "380px",
+          textAlign: "center"
+        }}
+      >
 
-      <option value="manager">
-        Manager
-      </option>
+        <h1
+          style={{
+            marginBottom: "30px",
+            color: "#222"
+          }}
+        >
+          Create Account
+        </h1>
 
-      <option value="staff">
-        Staff
-      </option>
+        <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginBottom: "15px",
+            borderRadius: "8px"
+          }}
+        >
+          <option value="">
+            Select Role
+          </option>
 
-    </select>
+          <option value="manager">
+            Manager
+          </option>
 
-    <br /><br />
+          <option value="staff">
+            Staff
+          </option>
 
-    <input
-      type="text"
-      placeholder="Username"
-      onChange={(e) => setUsername(e.target.value)}
-    />
+          <option value="customer">
+            Customer
+          </option>
 
-    <br /><br />
+        </select>
 
-    <input
-      type="password"
-      placeholder="Password"
-      onChange={(e) => setPassword(e.target.value)}
-    />
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{
+            width: "93%",
+            padding: "12px",
+            marginBottom: "15px",
+            borderRadius: "8px",
+            border: "1px solid #ccc"
+          }}
+        />
 
-    <br /><br />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{
+            width: "93%",
+            padding: "12px",
+            marginBottom: "20px",
+            borderRadius: "8px",
+            border: "1px solid #ccc"
+          }}
+        />
 
-    <button onClick={registerUser}>
-      Register
-    </button>
+        <button
+          onClick={registerUser}
+          style={{
+            width: "100%",
+            padding: "12px",
+            backgroundColor: "#0d6efd",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "16px",
+            cursor: "pointer"
+          }}
+        >
+          Register
+        </button>
 
-  </div>
+      </div>
 
+    </div>
   );
 }
 
-export default Register; 
+export default Register;
