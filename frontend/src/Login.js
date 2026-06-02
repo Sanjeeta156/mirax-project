@@ -45,7 +45,7 @@ function Login() {
         );
 
 
-       if (data.role === "manager") {
+       else if (data.role === "manager") {
 
           navigate("/dashboard");
 
@@ -69,16 +69,12 @@ function Login() {
 
   return (
 
-    <div
-     style={{
-      minHeight: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      background:
-        "linear-gradient(135deg, #667eea, #764ba2)"
-     }}
-   >
+    <div style={{
+      padding: "50px",
+      textAlign: "center",
+      backgroundColor: "#f4f6f8",
+      minHeight: "100vh"
+    }}>
 
       <h1
         style={{
