@@ -69,12 +69,16 @@ function Login() {
 
   return (
 
-    <div style={{
-      padding: "50px",
-      textAlign: "center",
-      backgroundColor: "#f4f6f8",
-      minHeight: "100vh"
-    }}>
+    <div
+     style={{
+      minHeight: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background:
+        "linear-gradient(135deg, #667eea, #764ba2)"
+     }}
+   >
 
       <h1
         style={{
