@@ -15,6 +15,7 @@ function Login() {
 
       navigate("/customer");
       return;
+
     }
 
     fetch("https://mirax-project-production.up.railway.app/login", {
@@ -26,9 +27,11 @@ function Login() {
       },
 
       body: JSON.stringify({
+
         username: username,
         password: password,
         role: role
+
       })
 
     })
@@ -42,25 +45,26 @@ function Login() {
         localStorage.setItem(
           "token",
           data.token
-        );
+        );        
 
-
-       else if (data.role === "manager") {
+        if (data.role === "manager") {
 
           navigate("/dashboard");
 
-       }
+        }
 
-      else if (data.role === "staff") {
+        else if (data.role === "staff") {
 
           navigate("/sales");
 
-      }
+        }
+
       }
 
       else {
 
-        alert("Invalid Login");
+        alert(data.message || "Invalid Login");
+
       }
 
     });
@@ -109,6 +113,7 @@ function Login() {
           Customer
         </option>
 
+
         <option value="staff">
           Canteen Staff
         </option>
@@ -116,9 +121,6 @@ function Login() {
         <option value="manager">
           Manager
         </option>
-
-       
-
 
       </select>
 
@@ -144,9 +146,11 @@ function Login() {
       )}
 
       {(
-    role === "staff" ||
-    role === "manager" 
-    ) && (
+
+        role === "staff" ||
+        role === "manager" 
+       
+      ) && (
 
         <div>
 
@@ -223,6 +227,7 @@ function Login() {
       </button>
 
     </div>
+
   );
 }
 
